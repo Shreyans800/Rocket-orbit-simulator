@@ -52,4 +52,3 @@ def atmosphere(altitude):
     return rho, P, T, sound
 
 # Simulation
- print("hello")
