@@ -2,6 +2,10 @@
 
 An interactive rocket launch and orbital insertion simulator built with Python and Streamlit.
 
+TRY IT!
+
+https://rocketorbitsimulator.streamlit.app/
+
 ##  Features
 
 - Rocket launch simulation
@@ -42,6 +46,9 @@ The trajectory visualization shows the planned flight path as a dotted line, whi
 - Pandas
 - Plotly
 
+This was quite a journey. Firstly, I studied the major variables(except drag) and found that it was similar to projectile motion, which eventually became the basis for the simulation. The only difficulty was using Plotly and Base64 and IO for the simulation, and also integrating it with Streamlit frame-by-frame motions. (Yes, a continuous  pre-built video-like projection would not work, so I had to make it move >16 FPS). The drag insertion in the calculations was solved by YouTube videos (Thanks, Google!) and pretty much that's it. Do enjoy adjusting different variables to see the results change!
+
+  
 ##  Project Structure
 
 ```text
