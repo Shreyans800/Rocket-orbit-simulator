@@ -1,176 +1,165 @@
-\# 🚀 Rocket Orbit Simulator
-
-
+# 🚀 Rocket Orbit Simulator
 
 An interactive rocket launch and orbital insertion simulator built with Python and Streamlit.
 
+## 🚀 Features
 
+- Rocket launch simulation
+- Engine thrust calculation
+- Specific impulse and mass flow rate
+- Fuel consumption and changing rocket mass
+- Atmospheric density, pressure and temperature
+- Atmospheric drag
+- Gravity variation with altitude
+- Flight trajectory visualization
+- Animated rocket trajectory
+- Altitude vs. time
+- Velocity vs. time
+- Acceleration vs. time
+- Mass and fuel tracking
+- Thrust vs. aerodynamic drag
+- Mach number analysis
+- Orbital velocity comparison
+- Orbital insertion analysis
+- Simulation data table
+- CSV export
 
-\## 🚀 Features
-
-
-
-\- Rocket launch simulation
-
-\- Engine thrust calculation
-
-\- Specific impulse and mass flow rate
-
-\- Fuel consumption and changing rocket mass
-
-\- Atmospheric density, pressure and temperature
-
-\- Atmospheric drag
-
-\- Gravity variation with altitude
-
-\- Flight trajectory visualization
-
-\- Altitude vs. time
-
-\- Velocity vs. time
-
-\- Acceleration vs. time
-
-\- Mass and fuel tracking
-
-\- Thrust vs. aerodynamic drag
-
-\- Mach number analysis
-
-\- Orbital velocity comparison
-
-\- Orbital insertion analysis
-
-\- Simulation data table
-
-\- CSV export
-
-
-
-\## 🛰️ Orbital Analysis
-
-
+## 🛰️ Orbital Analysis
 
 The simulator compares the rocket's final velocity with the circular orbital velocity required at the selected target altitude.
 
-
-
 It reports whether the vehicle:
 
+- Reached the target altitude and approximately orbital velocity
+- Reached the target altitude but has insufficient velocity
+- Failed to reach the target altitude
 
-
-\- Reached the target altitude and approximately orbital velocity
-
-\- Reached the target altitude but has insufficient velocity
-
-\- Failed to reach the target altitude
-
-
-
-\## 🌍 Physics Model
-
-
+## 🌍 Physics Model
 
 The simulation accounts for:
 
+- Thrust
+- Specific impulse
+- Propellant mass flow
+- Changing vehicle mass
+- Atmospheric drag
+- Atmospheric density
+- Gravity variation with altitude
+- Numerical integration
+- Orbital velocity
 
+### Thrust
 
-\- Thrust
+The simulator uses the full rocket thrust equation:
 
-\- Specific impulse
+$$
+T = \dot{m}V_e + (p_e-p_a)A_e
+$$
 
-\- Propellant mass flow
+where:
 
-\- Changing vehicle mass
+- $T$ = total thrust
+- $\dot{m}$ = propellant mass flow rate
+- $V_e$ = exhaust velocity
+- $p_e$ = nozzle exit pressure
+- $p_a$ = atmospheric pressure
+- $A_e$ = nozzle exit area
 
-\- Atmospheric drag
+Exhaust velocity is calculated from specific impulse:
 
-\- Atmospheric density
+$$
+V_e = I_{sp}g_0
+$$
 
-\- Gravity variation with altitude
+### Aerodynamic Drag
 
-\- Numerical integration
+$$
+D = \frac{1}{2}\rho v^2 C_D A
+$$
 
-\- Orbital velocity
+Drag is calculated opposite to the rocket's velocity vector.
 
+### Gravity
 
+$$
+g(h) = g_0\left(\frac{R_E}{R_E+h}\right)^2
+$$
 
-\### Thrust
+### Net Force
 
+The simulator resolves forces into horizontal and vertical components:
 
+$$
+F_x = T_x + D_x
+$$
 
-`T = mdot × Isp × g0`
+$$
+F_y = T_y + D_y - mg
+$$
 
+### Acceleration
 
+$$
+a_x = \frac{F_x}{m}
+$$
 
-\### Aerodynamic Drag
+$$
+a_y = \frac{F_y}{m}
+$$
 
+The total acceleration is:
 
+$$
+a = \sqrt{a_x^2+a_y^2}
+$$
 
-`D = 0.5 × rho × v² × Cd × A`
+### Orbital Velocity
 
+The required circular orbital velocity is calculated using:
 
+$$
+v_{orb} = \sqrt{\frac{\mu}{R_E+h}}
+$$
 
-\### Gravity
+## 🚀 Launch Angle
 
+The launch angle is measured from the ground:
 
+- **0°** = horizontal
+- **45°** = 45° above horizontal
+- **90°** = vertical
 
-`g(h) = g0 × (RE / (RE + h))²`
+## 📊 Visualization
 
+The simulator provides interactive Plotly visualizations for:
 
+- Rocket flight trajectory
+- Animated rocket motion
+- Altitude
+- Velocity
+- Acceleration
+- Mass and fuel
+- Thrust and drag
+- Mach number
 
-\### Net Force
+The trajectory visualization shows the planned flight path as a dotted line while the completed portion of the flight becomes a solid line.
 
+## 💻 Technologies
 
+- Python
+- Streamlit
+- NumPy
+- Pandas
+- Plotly
 
-`Fnet = T - D - m × g`
-
-
-
-\### Acceleration
-
-
-
-`a = Fnet / m`
-
-
-
-\## 💻 Technologies
-
-
-
-\- Python
-
-\- Streamlit
-
-\- NumPy
-
-\- Pandas
-
-\- Plotly
-
-
-
-\## 📁 Project Structure
-
-
+## 📁 Project Structure
 
 ```text
-
 Rocket-orbit-simulator/
-
 ├── .streamlit/
-
 │   └── config.toml
-
 ├── .gitignore
-
 ├── P1orbit.py
-
 ├── README.md
-
 ├── requirements.txt
-
-└── streamlit\_app.py
-
+└── streamlit_app.py
