@@ -773,12 +773,12 @@ if st.button(
     )
 
     rocket_sizex = max(
-        (x_max - x_min) * 0.08,
+        (x_max - x_min) * 0.15,
         0.5
     )
 
     rocket_sizey = max(
-        (y_max - y_min) * 0.08,
+        (y_max - y_min) * 0.15,
         0.5
     )
 
